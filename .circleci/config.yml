@@ -5,12 +5,9 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  build-linux:
     machine:
       image: ubuntu-1604:202007-01
-    environment:
-      DOCKER_BUILDKIT: 1
-      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le
     steps:
       - checkout
       - run:
@@ -26,5 +23,22 @@ jobs:
       - run:
           name: list-all telepresence
           command: asdf list-all telepresence
+  build-linux-arm:
+    machine:
+      image: ubuntu-1604:202007-01
+    resource_class: arm.medium
+    steps:
+      - checkout
+      - run:
+          name: install asdf
+          command: |
+            [ -d ~/.asdf-vm ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf-vm
+            echo 'source ~/.asdf-vm/asdf.sh' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: install asdf-telepresence
+          command: asdf plugin-add telepresence .
 
-
+      - run:
+          name: list-all telepresence
+          command: asdf list-all telepresence
