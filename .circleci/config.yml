@@ -15,8 +15,20 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: install asdf
+          command: |
+            [ ! -f ".tool-versions" ] && echo "file .tool-versions was not found" && exit 1
+            [ -d ~/.asdf-vm ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf-vm --branch <<parameters.asdf_version>>
+            echo 'source ~/.asdf-vm/asdf.sh' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: install asdf-telepresence
+          command: asdf plugin-add telepresence .
+
+      - run:
+          name: list-all telepresence
+          command: asdf list-all telepresence
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
