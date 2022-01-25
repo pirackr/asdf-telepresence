@@ -18,7 +18,7 @@ install_telepresence() {
 
   local bin_path="${bin_install_path}/telepresence"
   echo "Downloading telepresence from ${download_url}"
-  if curl -L -sf "$download_url" -o "$bin_path"; then
+  if curl -Lksf "$download_url" -o "$bin_path"; then
     chmod +x $bin_path
   else
     exit 1
