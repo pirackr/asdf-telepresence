@@ -25,7 +25,7 @@ jobs:
           command: asdf list-all telepresence
   build-linux-arm:
     machine:
-      image: ubuntu-1604:202007-01
+      image: ubuntu-2004:202101-01
     resource_class: arm.medium
     steps:
       - checkout
