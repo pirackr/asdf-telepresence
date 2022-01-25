@@ -16,7 +16,6 @@ jobs:
       - run:
           name: install asdf
           command: |
-            [ ! -f ".tool-versions" ] && echo "file .tool-versions was not found" && exit 1
             [ -d ~/.asdf-vm ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf-vm
             echo 'source ~/.asdf-vm/asdf.sh' >> $BASH_ENV
             source $BASH_ENV
