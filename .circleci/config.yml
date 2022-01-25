@@ -43,5 +43,7 @@ jobs:
           name: list-all telepresence
           command: asdf list-all telepresence
 workflows:
-  - build-linux
-  - build-linux-arm
+  build:
+    jobs:
+      - build-linux
+      - build-linux-arm
