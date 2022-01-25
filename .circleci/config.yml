@@ -28,9 +28,9 @@ jobs:
           name: run plugin test
           command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_BRANCH telepresence version
 
-  build-linux-arm:
-    machine:
-      image: ubuntu-2004:202101-01
+  build-mac:
+    macos:
+      xcode: 12.5.1
     resource_class: arm.medium
     steps:
       - checkout
@@ -56,4 +56,4 @@ workflows:
   build:
     jobs:
       - build-linux
-      - build-linux-arm
+      - build-mac
