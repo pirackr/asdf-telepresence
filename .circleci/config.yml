@@ -23,6 +23,11 @@ jobs:
       - run:
           name: list-all telepresence
           command: asdf list-all telepresence
+
+      - run:
+          name: run plugin test
+          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_SHA1 "telepresence version"
+
   build-linux-arm:
     machine:
       image: ubuntu-2004:202101-01
@@ -42,6 +47,11 @@ jobs:
       - run:
           name: list-all telepresence
           command: asdf list-all telepresence
+
+      - run:
+          name: run plugin test
+          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_SHA1 "telepresence version"
+
 workflows:
   build:
     jobs:

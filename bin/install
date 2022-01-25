@@ -16,8 +16,8 @@ install_kubectl() {
 
   mkdir -p "${bin_install_path}"
 
-  local bin_path="${bin_install_path}/kubectl"
-  echo "Downloading kubectl from ${download_url}"
+  local bin_path="${bin_install_path}/telepresence"
+  echo "Downloading telepresence from ${download_url}"
   if curl -L -sf "$download_url" -o "$bin_path"; then
     chmod +x $bin_path
   else
@@ -47,7 +47,7 @@ get_cpu() {
 get_download_url() {
   local version="$1"
   local platform="$(get_arch)"
-  echo "https://app.getambassador.io/download/tel2/${platform}/${get_cpu}/${version}/telepresence"
+  echo "https://app.getambassador.io/download/tel2/${platform}/$(get_cpu)/${version}/telepresence"
 }
 
 install_kubectl $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
