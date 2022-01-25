@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: run plugin test
-          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_SHA1 "telepresence version"
+          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_BRANCH telepresence version
 
   build-linux-arm:
     machine:
@@ -50,7 +50,7 @@ jobs:
 
       - run:
           name: run plugin test
-          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_SHA1 "telepresence version"
+          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_BRANCH telepresence version
 
 workflows:
   build:
