@@ -1,6 +1,6 @@
 # asdf-telepresence
 
-[![CircleCI](https://circleci.com/gh/pirackr/asdf-telepresence/tree/main.svg?style=svg)](https://circleci.com/gh/pirackr/asdf-telepresence/tree/main)
+[![Build](https://github.com/pirackr/asdf-telepresence/actions/workflows/build.yml/badge.svg)](https://github.com/pirackr/asdf-telepresence/actions/workflows/build.yml)
 
 [Telepresence](https://www.telepresence.io/) plugin for [asdf](https://github.com/asdf-vm/asdf) version manager. Forked from [Kubectl plugin](github.com/asdf-community/asdf-kubectl). 
 
