@@ -28,32 +28,7 @@ jobs:
           name: run plugin test
           command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_BRANCH telepresence version
 
-  build-mac:
-    macos:
-      xcode: 12.5.1
-    resource_class: arm.medium
-    steps:
-      - checkout
-      - run:
-          name: install asdf
-          command: |
-            [ -d ~/.asdf-vm ] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf-vm
-            echo 'source ~/.asdf-vm/asdf.sh' >> $BASH_ENV
-            source $BASH_ENV
-      - run:
-          name: install asdf-telepresence
-          command: asdf plugin-add telepresence .
-
-      - run:
-          name: list-all telepresence
-          command: asdf list-all telepresence
-
-      - run:
-          name: run plugin test
-          command: asdf plugin test telepresence ./ --asdf-plugin-gitref $CIRCLE_BRANCH telepresence version
-
 workflows:
   build:
     jobs:
       - build-linux
-      - build-mac
