@@ -4,8 +4,8 @@ set -e
 set -o pipefail
 
 ASDF_INSTALL_TYPE=${ASDF_INSTALL_TYPE:-version  }
-[ -n "$ASDF_INSTALL_VERSION" ] || (>&2 echo 'Missing ASDF_INSTALL_VERSION' && exit 1)
-[ -n "$ASDF_INSTALL_PATH" ] || (>&2 echo 'Missing ASDF_INSTALL_PATH' && exit 1)
+[ -n "$ASDF_INSTALL_VERSION" ] || (echo >&2 'Missing ASDF_INSTALL_VERSION' && exit 1)
+[ -n "$ASDF_INSTALL_PATH" ] || (echo >&2 'Missing ASDF_INSTALL_PATH' && exit 1)
 
 install_telepresence() {
   local version=$2
@@ -32,11 +32,11 @@ get_cpu() {
   machine_hardware_name=${ASDF_TELEPRESENCE_OVERWRITE_ARCH:-"$(uname -m)"}
 
   case "$machine_hardware_name" in
-    'x86_64') local cpu_type="amd64";;
-    'powerpc64le' | 'ppc64le') local cpu_type="ppc64le";;    
-    'aarch64') local cpu_type="arm64";;
-    'armv7l') local cpu_type="arm";;
-    *) local cpu_type="$machine_hardware_name";;
+    'x86_64') local cpu_type="amd64" ;;
+    'powerpc64le' | 'ppc64le') local cpu_type="ppc64le" ;;
+    'aarch64') local cpu_type="arm64" ;;
+    'armv7l') local cpu_type="arm" ;;
+    *) local cpu_type="$machine_hardware_name" ;;
   esac
 
   echo "$cpu_type"
