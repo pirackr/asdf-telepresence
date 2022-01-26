@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/pirackr/asdf-telepresence/tree/main.svg?style=svg)](https://circleci.com/gh/pirackr/asdf-telepresence/tree/main)
 
-Telepresence plugin for [asdf](https://github.com/asdf-vm/asdf) version manager. Forked from [Kubectl plugin](github.com/asdf-community/asdf-kubectl). 
+[Telepresence](https://www.telepresence.io/) plugin for [asdf](https://github.com/asdf-vm/asdf) version manager. Forked from [Kubectl plugin](github.com/asdf-community/asdf-kubectl). 
 
 ## Install
 
