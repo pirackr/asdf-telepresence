@@ -20,11 +20,11 @@ jobs:
       - name: asdf_plugin_test
         uses: asdf-vm/actions/plugin-test@v1.1.0
         with:
-          command: op --version
+          command: telepresence version
       - name: Checkout code
-        uses: actions/checkout
+        uses: actions/checkout@v2
         with:
-          path: teleprsence
+          path: telepresence
       - name: Move telepresence plugin to plugins dir
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
@@ -39,7 +39,7 @@ jobs:
           asdf install telepresence 2.4.7
           echo "Setting telepresence version 2.4.6 as the default value in ~/.tool-versions"
           echo 'telepresence 2.4.6' > ~/.tool-versions
-          op --version 2>&1 | grep '2.4.6'
+          telepresence version 2>&1 | grep '2.4.6'
           echo "Setting telepresence version 2.4.7 as the default value in ~/.tool-versions"
           echo 'telepresence 2.4.7' > ~/.tool-versions
-          op --version 2>&1 | grep '2.4.7'
+          telepresence version 2>&1 | grep '2.4.7'
