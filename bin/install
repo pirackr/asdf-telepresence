@@ -15,8 +15,7 @@ install_telepresence() {
   mkdir -p "${bin_install_path}"
 
   local bin_path="${bin_install_path}/telepresence"
-  echo "Downloading telepresence from $(get_download_url "$version")"
-  if curl -Lksf "$download_url" -o "$bin_path"; then
+  if curl -Lksf "$(get_download_url "$version")" -o "$bin_path"; then
     chmod +x "$bin_path"
   else
     exit 1
