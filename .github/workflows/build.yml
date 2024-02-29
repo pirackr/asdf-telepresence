@@ -21,10 +21,12 @@ jobs:
         uses: asdf-vm/actions/plugin-test@v2
         with:
           command: telepresence version
+
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: telepresence
+
       - name: Move telepresence plugin to plugins dir
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
