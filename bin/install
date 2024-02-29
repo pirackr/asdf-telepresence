@@ -42,7 +42,7 @@ get_cpu() {
 }
 
 get_download_url() {
-  echo "https://app.getambassador.io/download/tel2/$(get_arch)/$(get_cpu)/$1/telepresence"
+  echo "https://app.getambassador.io/download/tel2oss/releases/download/$1/telepresence-$(get_arch)-$(get_cpu)"
 }
 
 install_telepresence "$ASDF_INSTALL_TYPE" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
