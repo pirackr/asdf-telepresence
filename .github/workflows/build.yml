@@ -35,13 +35,13 @@ jobs:
         run: |
           echo "Trying to list all versions of telepresence"
           asdf list all telepresence
-          echo "Will try to install telepresence 2.4.6"
-          asdf install telepresence 2.4.6
-          echo "Will try to install telepresence 2.4.7"
-          asdf install telepresence 2.4.7
-          echo "Setting telepresence version 2.4.6 as the default value in ~/.tool-versions"
-          echo 'telepresence 2.4.6' > ~/.tool-versions
-          telepresence version 2>&1 | grep '2.4.6'
-          echo "Setting telepresence version 2.4.7 as the default value in ~/.tool-versions"
-          echo 'telepresence 2.4.7' > ~/.tool-versions
-          telepresence version 2>&1 | grep '2.4.7'
+          echo "Will try to install telepresence 2.17.0"
+          asdf install telepresence 2.17.0
+          echo "Will try to install telepresence 2.18.0"
+          asdf install telepresence 2.18.0
+          echo "Setting telepresence version 2.17.0 as the default value in ~/.tool-versions"
+          echo 'telepresence 2.17.0' > ~/.tool-versions
+          telepresence version 2>&1 | grep '2.17.0'
+          echo "Setting telepresence version 2.18.0 as the default value in ~/.tool-versions"
+          echo 'telepresence 2.18.0' > ~/.tool-versions
+          telepresence version 2>&1 | grep '2.18.0'

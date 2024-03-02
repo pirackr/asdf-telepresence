@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
-set -euo pipefail
+cmd="curl --silent --location"
+releases_path="https://api.github.com/repos/telepresenceio/telepresence/releases?per_page=100"
 
-# stolen from https://github.com/rbenv/ruby-build/pull/631/files#diff-fdcfb8a18714b33b07529b7d02b54f1dR942
-function sort_versions() {
+if [ -n "$GITHUB_API_TOKEN" ]; then
+  cmd="$cmd --header 'Authorization: token $GITHUB_API_TOKEN'"
+fi
+
+sort_versions() {
   sed 'h; s/[+-]/./g; s/.p\([[:digit:]]\)/.z\1/; s/$/.z/; G; s/\n/ /' |
     LC_ALL=C sort -t. -k 1,1 -k 2,2n -k 3,3n -k 4,4n -k 5,5n | awk '{print $2}'
 }
 
-list_all_versions() {
-  git ls-remote --tags --refs https://github.com/telepresenceio/telepresence.git |
-    grep -o 'refs/tags/.*' |
-    cut -d/ -f3- |
-    sed 's/^v//'
-}
+versions=$(
+  eval "$cmd $releases_path" |
+    grep -o '"name": "v.*' |
+    sed 's/"name": "v\(.*\)",/\1/' |
+    grep -E '[0-9]+.[0-9]+.[0-9]+$' |
+    xargs
+)
 
-list_all_versions | sort_versions | xargs echo
+echo "$versions"
