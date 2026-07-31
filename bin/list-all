@@ -18,6 +18,7 @@ versions=$(
     grep -o '"name": "v.*' |
     sed 's/"name": "v\(.*\)",/\1/' |
     grep -E '[0-9]+.[0-9]+.[0-9]+$' |
+    sort_versions |
     xargs
 )
 
